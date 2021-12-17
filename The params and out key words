@@ -1,0 +1,46 @@
+using System;
+
+namespace ConsoleApp1
+{
+ class Program
+    {
+        public static void OutMethod (int n1,int n2,out int sum ,out int p)
+        {
+            // the method must be void because the return wiil send as out variabe;
+            // you shoud declare the same numbers of out variable in the main func to store the return output of the method
+
+            sum=n1 + n2;
+            p= n1 * n2;
+        }
+        public static void ParamsMethod(params int[] Numbers)
+        {
+            //the (params)keyword let u specify amethod parameter like:
+            // 1- you can send a comm-seperated list of arguments(1,2,3);
+            // 2- can send array(numbers);
+            // 3- you can send no arguments ();
+            // Notes
+            // 1- Params keyword must be the last one in the method declaration (, , params);
+            // and must be only one params in the method declaration ;
+            Console.WriteLine("the Number is ");
+            foreach (int i in Numbers)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine();
+        }
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[2];
+            numbers[0] = 10;
+            numbers[1] = 20;
+            ParamsMethod(numbers);
+            ParamsMethod(1,2,3);
+            ParamsMethod();
+
+
+            //int sum, p;
+            OutMethod(5, 5, out int sum, out int product);
+            Console.WriteLine("sum = {0} and pro= {1}",sum,product); 
+        }
+    }
+}
