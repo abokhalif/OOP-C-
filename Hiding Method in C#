@@ -1,0 +1,61 @@
+using System;
+
+namespace ConsoleApp1
+{
+    // 4 ways to use the Hiding Method : 
+    public class Employee
+    {
+        public string FName;
+        public string LName;
+        public void PrintFullName()
+        {
+            Console.WriteLine(FName+" "+LName);
+        }
+
+    }
+    public class PartTimeEmployee:Employee
+    {
+
+        public new void PrintFullName()// 1-  use  (new) key word to---> hide the base class member:
+                                       // The func is the same then base func -->when you  Add (new) you can use the same func it found in the 
+                                       //base class with the same signture in the child class and the child func will run;
+        {
+            Console.WriteLine(FName + " " + LName+" the child class");
+
+            /* 2- use (base)keyword to--> invoke the hiden base class member :
+             when u use the base func you will use (base)keyword;
+            base.PrintFullName();*/
+        }
+    }
+    public class FullTimeEmployee : Employee
+    {
+       
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            /* 4- parent class PC=new child class();
+            PC.hidden member();
+            we make the parent class pointer to the child class"Polymorphism"
+            Employee PTE = new PartTimeEmployee();*/
+
+            PartTimeEmployee PTE = new PartTimeEmployee();
+            FullTimeEmployee FTE = new FullTimeEmployee();
+            FTE.FName=PTE.FName = "Ahmed";
+            FTE.LName =PTE.LName= "Saber";
+
+
+            /* 3- cast child type to parent type and invoke the hidden member 
+             * using casting to convert the child class to the derived class
+            ((Employee)PTE).PrintFullName();*/
+           
+
+            PTE.PrintFullName();
+            FTE.PrintFullName();
+
+        }
+    }
+}
